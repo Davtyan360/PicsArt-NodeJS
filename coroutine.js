@@ -1,4 +1,4 @@
-function coroutine1(gen) {
+function myCoroutine(gen) {
   let iter = gen();
   return new Promise((res) => {
     function isPromis(next) {
