@@ -9,7 +9,6 @@ const router = express.Router();
 router.delete("/delete/:id", verifyToken, async (req, res) => {
   const post = await Post.findOne({ _id: req.params.id });
   if (!post) return res.status(400).send("Cant find post with such id");
-console.log(post.userMail+" ")
   if(post.userMail!=req.user.email)
   return res.status(400).send("Its not your post");
   Post.deleteOne({ _id: req.params.id }, function (err) {
