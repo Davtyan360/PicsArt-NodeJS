@@ -1,12 +1,11 @@
 const express = require("express");
 
 const Post = require("../model/Post");
-const verifyToken = require("../tokensWork/verifyToken");
 
 const router = express.Router();
 
 //   /api/posts/work/delete/:id - deleting post by id
-router.delete("/delete/:id", verifyToken, async (req, res) => {
+router.delete("/delete/:id",async (req, res) => {
   const post = await Post.findOne({ _id: req.params.id });
   if (!post) return res.status(400).send("Cant find post with such id");
   if(post.userMail!=req.user.email)
@@ -17,7 +16,7 @@ router.delete("/delete/:id", verifyToken, async (req, res) => {
   });
 });
 //   /api/posts/work/:id - getting post by id
-router.get("/:id", verifyToken, async (req, res) => {
+router.get("/:id", async (req, res) => {
   const post = await Post.findOne({ _id: req.params.id });
   if (!post) return res.status(400).send("Cant find post with such id");
   res.send(post);
