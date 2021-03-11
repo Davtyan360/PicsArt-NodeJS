@@ -9,6 +9,7 @@ const searchUser = require("./userRout/searchUser");
 const getUserPosts = require("./userRout/getUserPosts");
 
 const uploadImage = require("./uploadImage/upload");
+const verifyToken = require("./tokensWork/verifyToken");
 
 const createPost = require("./postRout/creaetPost");
 const postWork = require("./postRout/postWork");
@@ -22,6 +23,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/users", auth);
+app.use(verifyToken);
 app.use("/api/users/update", updateUser);
 app.use("/api/users/search", searchUser);
 app.use("/api/users/posts", getUserPosts);
