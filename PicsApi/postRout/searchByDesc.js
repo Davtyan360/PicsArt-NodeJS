@@ -1,13 +1,12 @@
 const express = require("express");
 const querystring = require("querystring");
 
-const verifyToken = require("../tokensWork/verifyToken");
 const Post = require("../model/Post");
 
 const router = express.Router();
 
 //  /api/posts/desc/:desc
-router.get("/:desc", verifyToken, async (req, res) => {
+router.get("/:desc",  async (req, res) => {
   let q = querystring.parse(req.params.desc);
   let post = await Post.find();
   if (q.userMail) post = post.filter((val) => val.userMail == q.userMail);
