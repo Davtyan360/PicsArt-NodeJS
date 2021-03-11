@@ -1,12 +1,11 @@
 const express = require("express");
 
-const verifyToken = require("../tokensWork/verifyToken");
 const User = require("../model/User");
 
 const router = express.Router();
 
 //api/users/search/:mail - User search by mail
-router.get("/:mail", verifyToken, async (req, res) => {
+router.get("/:mail", async (req, res) => {
   let { mail } = req.params;
   
   const result = await User.findOne({ email: mail });
