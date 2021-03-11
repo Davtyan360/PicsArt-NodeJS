@@ -1,14 +1,13 @@
 const express = require("express");
 const fs = require("fs");
 
-const verifyToken = require("../tokensWork/verifyToken");
 const Post = require("../model/Post");
 const User = require("../model/User");
 
 const router = express.Router();
 
 //app/posts/create
-router.post("/create", verifyToken, async (req, res) => {
+router.post("/create",  async (req, res) => {
   let obj1 = {};
   await req.files["image"].map(async (element, ind) => {
     await fs.readFile(
