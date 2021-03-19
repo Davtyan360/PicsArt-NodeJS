@@ -6,7 +6,6 @@ class EventEmit {
   static emit(path, ...args) {
     if (!this.obj[path]) return false;
     this.obj[path].func(...args);
-    delete this.obj[path]
     return true;
   }
 }
