@@ -1,3 +1,8 @@
+const express = require("express");
+const fs = require("fs");
+const mime = require("mime-types");
+const app = express();
+
 function staticFu(rd) {
   return async (req, res, next) => {
     await fs.readdir(rd, async (err, data) => {
